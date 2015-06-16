@@ -1,17 +1,41 @@
 package news.com.androiddemo;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
 
-public class MainActivity extends ActionBarActivity {
+import news.com.androiddemo.adapter.NewsFragmentPagerAdapter;
+import news.com.androiddemo.bean.NewsClassify;
+import news.com.androiddemo.fragment.NewsFragment;
+import news.com.androiddemo.tool.BaseTools;
+import news.com.androiddemo.tool.Constants;
+
+
+public class MainActivity extends FragmentActivity {
+
+    /**新闻类列表*/
+    private ArrayList<NewsClassify> newsClassify = new ArrayList<NewsClassify>();
+    private ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+    private ViewPager mViewPaper;
+    /** 屏幕宽度 */
+    private int mScreenWidth = 0;
+    /** Item宽度 */
+    private int mItemWidth = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mScreenWidth = BaseTools.getWindowsWidth(this);
+        mItemWidth = mScreenWidth/7;
+        newsClassify = Constants.getData();
+        initView();
+        initFragment();
     }
 
 
@@ -22,6 +46,9 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    private void initView(){
+        mViewPaper = (ViewPager) findViewById(R.id.mViewPaper);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -35,5 +62,19 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private void initFragment(){
+        int count = newsClassify.size();
+
+            Bundle data = new Bundle();
+            data.putString("text",newsClassify.get(0).getTitle());
+            NewsFragment newfragment = new NewsFragment();
+            newfragment.setArguments(data);
+            fragments.add(newfragment);
+        NewsFragmentPagerAdapter mAdapter = new NewsFragmentPagerAdapter(getSupportFragmentManager(), fragments);
+         mViewPaper.setCurrentItem(0);
+         mViewPaper.setAdapter(mAdapter);
+       // mViewPaper.setOnPageChangeListener(pageListener);
+
     }
 }

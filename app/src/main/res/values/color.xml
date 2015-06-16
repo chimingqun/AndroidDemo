@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="title_text_color">#ffffffff</color>
+    <color name="activity_bg_color">#fff5f5f5</color>
+    <color name="item_title">#ff444444</color>
+    <color name="divider_day">#ffdddddd</color>
+    <color name="image_loading_bg">#ffefefef</color>
+    <color name="feed_hint_normal">#fff0f0f0</color>
+    <color name="feed_hint_normal_night">#ff252525</color>
+    <color name="feed_hint_pressed">#ffeaeaea</color>
+    <color name="feed_hint_pressed_night">#ff191919</color>
+    <color name="ss_comment_from">#ff999999</color>
+    <color name="ss_comment_from_night">#ff999999</color>
+    <color name="ss_comment_time">#ff999999</color>
+    <color name="ss_comment_time_night">#ff505050</color>
+    <color name="ss_comment_section">#ff65544a</color>
+    <color name="item_local">#ffffffff</color>
+    <color name="item_local_night">#ff1a1a1a</color>
+    <color name="item_title_normal">#ff444444</color>
+    <color name="item_title_disabled">#ff888888</color>
+    <color name="item_abstract">#ff444444</color>
+    <color name="item_abstract_disabled">#ff929292</color>
+    <color name="default_text_night">#ff747474</color>
+    <color name="white">#ffffffff</color>
+
+</resources>
