@@ -67,9 +67,11 @@ public class NewsAdapter extends BaseAdapter{
     }
     @Override
     public View getView(int position,View convertView,ViewGroup parent){
+        //加载一次，然后缓存起来，提高效率ViewHolder
         ViewHolder mHolder;
         View view = convertView;
         if(view == null){
+            //实例化layout文件
             view = inflater.inflate(R.layout.list_item,null);
             mHolder = new ViewHolder();
             mHolder.item_layout = (RelativeLayout)view.findViewById(R.id.item_layout);
@@ -92,6 +94,7 @@ public class NewsAdapter extends BaseAdapter{
             mHolder.right_padding_view = (View)view.findViewById(R.id.right_padding_view);
             view.setTag(mHolder);
         }else{
+            //直接调用缓存
             mHolder = (ViewHolder)view.getTag();
         }
         NewsEntity news = getItem(position);
@@ -106,20 +109,20 @@ public class NewsAdapter extends BaseAdapter{
         if(imgUrlList !=null&&imgUrlList.size()!=0){
             if (imgUrlList.size()==1){
                 mHolder.item_image_layout.setVisibility(View.GONE);
-                //是否大图
+                //是否大图，是大图显示大图view
                 if(news.getIsLarge()){
                     mHolder.large_image.setVisibility(View.VISIBLE);
                     mHolder.right_image.setVisibility(View.GONE);
                     imageLoader.displayImage(imgUrlList.get(0),mHolder.large_image,options);
                     mHolder.popicon.setVisibility(View.GONE);
                     mHolder.right_padding_view.setVisibility(View.GONE);
-                }else{
+                }else{//显示小图布局
                     mHolder.large_image.setVisibility(View.GONE);
                     mHolder.right_image.setVisibility(View.VISIBLE);
                     imageLoader.displayImage(imgUrlList.get(0),mHolder.right_image,options);
                 }
 
-            }else{
+            }else{//多图布局
                 mHolder.large_image.setVisibility(View.GONE);
                 mHolder.right_image.setVisibility(View.GONE);
                 mHolder.item_image_layout.setVisibility(View.VISIBLE);
@@ -128,7 +131,7 @@ public class NewsAdapter extends BaseAdapter{
                 imageLoader.displayImage(imgUrlList.get(2),mHolder.item_image_2,options);
 
             }
-        }else{
+        }else{//没有图片的新闻
             mHolder.right_image.setVisibility(View.GONE);
             mHolder.item_image_layout.setVisibility(View.GONE);
         }
@@ -214,6 +217,7 @@ public class NewsAdapter extends BaseAdapter{
             return R.mipmap.ic_mark_favor;
         }
         switch (mark){
+            //R文件里都是资源id
             case Constants.mark_recom:
                 return R.mipmap.ic_mark_recommend;
             case Constants.mark_hot:

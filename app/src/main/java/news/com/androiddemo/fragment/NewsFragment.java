@@ -44,9 +44,11 @@ public class NewsFragment extends Fragment{
         super.onAttach(activity);
     }
     @Override
+    /**fragement可见时，再进行数据加载，避免开始初始大量数据*/
     public void setUserVisibleHint(boolean isVisibleToUser){
         if(isVisibleToUser){
             if(newsList!=null && newsList.size()!=0){
+                //向handler发送消息，加载新闻列表
                 handler.obtainMessage(SET_NEWSLIST).sendToTarget();
             }else{
                 new Thread(new Runnable() {
@@ -66,7 +68,7 @@ public class NewsFragment extends Fragment{
         }
         super.setUserVisibleHint(isVisibleToUser);
     }
-
+    //加载新闻列表
     Handler handler = new Handler() {
 
         @Override
@@ -85,6 +87,7 @@ public class NewsFragment extends Fragment{
     };
 
     @Override
+    //创建对应的视图
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState){
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.news_fragment,null);
         mListView = (ListView)view.findViewById(R.id.mListView);

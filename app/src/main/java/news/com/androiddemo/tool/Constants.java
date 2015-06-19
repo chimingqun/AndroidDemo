@@ -65,9 +65,9 @@ public class Constants {
             news.setTitle("可以用谷歌眼镜做的10件酷事：导航、玩游戏");
             List<String> url_list = new ArrayList<String>();
             if(i%2 == 1){
-                String url1 = "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066094_400_640.jpg";
-                String url2 = "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066096_400_640.jpg";
-                String url3 = "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066099_400_640.jpg";
+                String url1 = "http://img1.gtimg.com/digi/pics/hv1/44/164/1569/102066089.jpg";
+                String url2 = "http://img1.gtimg.com/digi/pics/hv1/45/164/1569/102066090.jpg";
+                String url3 = "http://img1.gtimg.com/digi/pics/hv1/49/164/1569/102066094.jpg";
                 news.setPicOne(url1);
                 news.setPicTwo(url2);
                 news.setPicThr(url3);
