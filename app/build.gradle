@@ -27,4 +27,5 @@ dependencies {
     compile files('src/main/libs/push.jar')
     compile files('src/main/libs/universal-image-loader-1.9.2-SNAPSHOT-with-sources.jar')
 	compile project(':libraries:SlidingMenu/library')
+	compile project(':libraries:PulltoRefresh/library')
 }
